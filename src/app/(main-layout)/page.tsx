@@ -6,7 +6,7 @@ import { memo } from "react";
 
 const Home = async () => {
   return (
-    <div className="bg-pink-100 h-screen">
+    <div className="bg-slate-200 h-screen">
       <div className=" container text-center flex flex-col">
         <h2 className="font-bold text-6xl text-slate-800 mt-40">
           Welcome to Next JS!
