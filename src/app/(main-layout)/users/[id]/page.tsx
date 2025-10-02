@@ -43,7 +43,7 @@ const DetailUser = async ({ params }: { params: Promise<{ id: string }> }) => {
   const data = await response.json();
 
   return (
-    <div className="flex container h-screen items-center ">
+    <div className="flex container h-screen items-center">
       <div
         className="shadow-2xl border-t rounded-[30px] p-7 transform transition duration-300 hover:scale-105 mx-auto w-full flex flex-row h-[300px]"
         key={data.id}
@@ -55,7 +55,7 @@ const DetailUser = async ({ params }: { params: Promise<{ id: string }> }) => {
             <b>{data.name.lastname.toUpperCase()}</b>
           </div>
           <br />
-          <div className="grid grid-cols-2 place-items-center ">
+          <div className="grid md:grid-cols-2 grid-cols-1 place-items-center ">
             <h3 className="flex gap-2">
               <b>Address:</b> {data?.address.city.toUpperCase()}
             </h3>

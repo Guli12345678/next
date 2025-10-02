@@ -10,7 +10,7 @@ const ProductView: FC<Props> = (props) => {
   const { products } = props;
 
   return (
-    <div className="grid grid-cols-4 gap-4 container mt-40">
+    <div className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-4 container mt-40">
       {products?.map((item: any) => (
         <div key={item.id} className="shadow-lg p-7">
           <div>

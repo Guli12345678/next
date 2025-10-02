@@ -11,7 +11,7 @@ const UserView: FC<Props> = (props) => {
   console.log(data);
 
   return (
-    <div className="grid grid-cols-4 gap-4 container">
+    <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-4 container">
       {data?.map((item: any) => (
         <div
           className="shadow-lg p-7 transform transition duration-300 hover:scale-105"

@@ -1,27 +1,52 @@
+"use client";
 import Link from "next/link";
-import { memo } from "react";
+import { memo, useState } from "react";
 
 const Header = () => {
+  const [open, setOpen] = useState(false);
+
   return (
-    <div className="bg-slate-800 flex items-center gap-4 p-5">
-      <div className="container flex justify-between text-white">
+    <header className="bg-slate-800 text-white p-5">
+      <div className="container mx-auto flex justify-between items-center">
         <h2 className="font-bold text-2xl">Logo</h2>
-        <div className="flex gap-20  ">
-          <Link className="font-semibold hover:text-black" href={"/"}>
+
+        <nav className="hidden md:flex gap-10">
+          <Link className="font-semibold hover:text-black" href="/">
             Home
           </Link>
-          <Link className="hover:text-black font-semibold" href={"/product"}>
+          <Link className="font-semibold hover:text-black" href="/product">
             Product
           </Link>
-          <Link className="hover:text-black font-semibold" href={"/users"}>
+          <Link className="font-semibold hover:text-black" href="/users">
             Users
           </Link>
-          <Link className="hover:text-black font-semibold" href={"/login"}>
+          <Link className="font-semibold hover:text-black" href="/login">
             Login
           </Link>
-        </div>
+        </nav>
+
+        <button className="md:hidden text-2xl " onClick={() => setOpen(!open)}>
+          {open ? "✕" : "☰"}
+        </button>
       </div>
-    </div>
+
+      {open && (
+        <nav className="md:hidden mt-4 flex flex-col gap-4 text-center">
+          <Link className="font-semibold hover:text-black" href="/">
+            Home
+          </Link>
+          <Link className="font-semibold hover:text-black" href="/product">
+            Product
+          </Link>
+          <Link className="font-semibold hover:text-black" href="/users">
+            Users
+          </Link>
+          <Link className="font-semibold hover:text-black" href="/login">
+            Login
+          </Link>
+        </nav>
+      )}
+    </header>
   );
 };
 
