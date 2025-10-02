@@ -15,11 +15,11 @@ const ProductView: FC<Props> = (props) => {
         <div key={item.id} className="shadow-lg p-7">
           <div>
             <Image
-              className="w-[300px] h-[300px] object-cover"
+              className="w-[300px] h-[300px] "
               src={item.image}
               alt={item.title}
-              width={300}
-              height={300}
+              width={900}
+              height={900}
             />
           </div>
           <div className="mt-10">

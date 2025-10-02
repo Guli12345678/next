@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import React from "react";
+import SeeMore from "../../../../components/SeeMore";
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -21,8 +22,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 // SEO
 export async function generateStaticParams() {
-  const data = await fetch("https://fakestoreapi.com/users").then(
-    (res) => res.json()
+  const data = await fetch("https://fakestoreapi.com/users").then((res) =>
+    res.json()
   );
   return data?.map((pro: any) => ({
     id: pro.id.toString(),
@@ -42,13 +43,46 @@ const DetailUser = async ({ params }: { params: Promise<{ id: string }> }) => {
   const data = await response.json();
 
   return (
-    <div className="grid grid-cols-2">
-      <div>
-        <h1>
-          {data?.name?.firstname} {data?.name?.lastname}
-        </h1>
-        <strong>{data?.price} USD</strong>
-        <p>{data?.description}</p>
+    <div className="flex container h-screen items-center ">
+      <div
+        className="shadow-2xl border-t rounded-[30px] p-7 transform transition duration-300 hover:scale-105 mx-auto w-full flex flex-row h-[300px]"
+        key={data.id}
+      >
+        <div className="w-full mt-10 ">
+          <div className="gap-2 text-center">
+            <b className="">{data.name.firstname.toUpperCase()}</b>
+
+            <b>{data.name.lastname.toUpperCase()}</b>
+          </div>
+          <br />
+          <div className="grid grid-cols-2 place-items-center ">
+            <h3 className="flex gap-2">
+              <b>Address:</b> {data?.address.city.toUpperCase()}
+            </h3>
+
+            <h3 className="flex gap-2">
+              <b>Email: </b>
+              {data?.email}
+            </h3>
+
+            <h3 className="flex gap-2">
+              <b>Username: </b>
+              {data?.username}
+            </h3>
+            <h3 className="flex gap-2">
+              <b>Phone: </b>
+              {data?.phone}
+            </h3>
+          </div>
+          <div className="flex gap-10 mt-10 justify-center">
+            <button className="px-4 py-3 hover:bg-white border hover:text-black bg-black text-white rounded-xl">
+              Send Message
+            </button>
+            <button className="px-13 py-3 hover:bg-white border hover:text-black bg-black text-white rounded-xl transition-transform ease-in-out">
+              Follow
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
